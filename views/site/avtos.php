@@ -1,6 +1,8 @@
 <?php
 use yii\widgets\LinkPager;
-use yii\db\ActiveRecord;d
+use yii\db\ActiveRecord;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
 ?>
 
@@ -34,7 +36,7 @@ use yii\db\ActiveRecord;d
 <td><?=$avto->moschnost?></td>
 <td><?=$avto->price?></td>
 <td><?=$avto->place?></td>
-<!--        <td>--><?//= html::a('Удалить', Url::to(['test/delete', 'id' => $avto->id])) ?><!--</td>>-->
+        <td><?= Html::a('Удалить', Url::to(['test/delete', 'id' => $avto->id])) ?></td>>
 </tr>
 
 
