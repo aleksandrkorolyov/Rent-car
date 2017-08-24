@@ -38,19 +38,11 @@ class AvtomobilesController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Avtomobiles::find(),
+            'pagination' => ['pageSize' => 10],
         ]);
-//        $pagination = new Pagination ([
-//
-//            'defaultPageSize'=>7,
-//            'totalCount' => query-> count()
-//        ]);
-//        $avtomobiles = $avtomobiless->offset($pagination->offset)
-//            ->limit($pagination->limit)
-//            ->all();
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
-            'pagination'=>$pagination
         ]);
     }
 
