@@ -14,7 +14,6 @@ use app\models\Avtos;
 use app\models\Add_car;
 use  yii\db\ActiveRecord;
 use yii\data\Pagination;
-use app\models\TestModel;
 
 class SiteController extends Controller
 {
@@ -200,5 +199,24 @@ class SiteController extends Controller
             ]
 
             );
+    }
+
+    public function actionDelete_car_success(){
+        return $this->render('delete_car_success');
+    }
+
+    public function actionDelete_car($id)
+    {
+        $post = Avtos::findOne($id);
+        $post->delete();
+        return $this->render('delete_car_success');
+
+    }
+    public function actionPage_car()
+    {
+        $avtos = Avtos::find()->all();
+        return $this->render('page_car',[
+            'avtos'=>$avtos
+        ]);
     }
 }

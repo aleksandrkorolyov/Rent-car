@@ -37,6 +37,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
+            ['label' => 'Автомобили NEW', 'url' => ['/avtomobiles/index']],
             ['label' => 'Добавить автомобиль', 'url' => ['/site/add_car']],
             ['label' => 'Автомобили', 'url' => ['/site/avtos']],
             ['label' => 'Домой', 'url' => ['/site/index']],

@@ -27,8 +27,12 @@ use yii\helpers\Url;
 	 $color = 255;
 	else $color=230;?>
 	<tr style= 'background:rgb(<?=$color?>,<?=$color?>,<?=$color?>)'>
- 
-<td align='left'><?=$avto->marka_model?></td>
+
+
+<td align='left'>
+    <a href="<?=Yii::$app->urlManager->createUrl(['site/page_car','id'=>$avto->id])?>">
+    <?=$avto->marka_model?>
+        </a>></td>
 <td><?=$avto->color?></td>
 <td><?=$avto->year?></td>
 <td><?=$avto->fuel?></td>
@@ -36,7 +40,18 @@ use yii\helpers\Url;
 <td><?=$avto->moschnost?></td>
 <td><?=$avto->price?></td>
 <td><?=$avto->place?></td>
-        <td><?= Html::a('Удалить', Url::to(['test/delete', 'id' => $avto->id])) ?></td>>
+        <td><?= html::a('Редактировать', Url::to(['site/edit_car', 'id' => $avto->id,
+           'marka_model'=>$avto->marka_model,
+                'color'=>$avto->color,
+                'year'=>$avto->year,
+                'fuel'=>$avto->fuel,
+                'rashod'=>$avto->rashod,
+                'moschnost'=>$avto->moschnost,
+                'reg_nomer'=>$avto->reg_nomer,
+                'price'=>$avto->price,
+                'place'=>$avto->place,
+                ])) ?></td>>
+        <td><?= html::a('Удалить', Url::to(['site/delete_car', 'id' => $avto->id])) ?></td>>
 </tr>
 
 
