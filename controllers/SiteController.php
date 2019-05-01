@@ -12,7 +12,9 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Avtos;
 use app\models\Add_car;
-use  yii\db\ActiveRecord;
+use app\models\SignupForm;
+use app\models\User;
+use yii\db\ActiveRecord;
 use yii\data\Pagination;
 
 class SiteController extends Controller
@@ -69,6 +71,23 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+    public function actionSignup(){
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+        $model = new SignupForm();
+        if($model->load(\Yii::$app->request->post()) && $model->validate()){
+            $user = new User();
+            $user->username = $model->username;
+            $user->password = \Yii::$app->security->generatePasswordHash($model->password);
+            if($user->save()){
+                return $this->goHome();
+            }
+        }
+
+        return $this->render('signup', compact('model'));
+    }
+    
     /**
      * Login action.
      *
